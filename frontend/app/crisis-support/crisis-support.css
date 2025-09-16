@@ -1,0 +1,513 @@
+/* ===== CRISIS SUPPORT STYLES ===== */
+/* Emergency mental health support interface */
+
+.crisis-support {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 100px);
+  background: var(--bg1);
+  color: var(--fg0);
+}
+
+/* ===== EMERGENCY ALERT ===== */
+.emergency-alert {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.1));
+  border: 2px solid rgba(239, 68, 68, 0.4);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+.alert-icon {
+  font-size: 40px;
+  min-width: 50px;
+  animation: urgent-pulse 2s ease-in-out infinite;
+}
+
+.alert-content h2 {
+  color: var(--fgDanger);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.alert-content p {
+  color: var(--fg0);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@keyframes gentle-pulse {
+  0%, 100% { 
+    box-shadow: 0 8px 30px rgba(239, 68, 68, 0.2);
+  }
+  50% { 
+    box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+  }
+}
+
+@keyframes urgent-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ===== IMMEDIATE HELP ===== */
+.immediate-help {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  color: var(--fg0);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.help-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.help-button {
+  background: var(--bg2);
+  border: 2px solid var(--bg3);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.help-button.primary {
+  border-color: #8b5cf6;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
+}
+
+.help-button.secondary {
+  border-color: var(--fgDanger);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+}
+
+.help-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+}
+
+.help-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button-icon {
+  font-size: 32px;
+  min-width: 40px;
+}
+
+.button-content h4 {
+  color: var(--fg0);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.button-content p {
+  color: var(--fg3);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ===== EMERGENCY CONTACTS ===== */
+.emergency-contacts {
+  margin-bottom: 40px;
+}
+
+.contacts-list {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  background: var(--bg3);
+  transform: translateY(-2px);
+}
+
+.contact-card.crisis {
+  border-left: 4px solid var(--fgDanger);
+}
+
+.contact-card.text {
+  border-left: 4px solid #3b82f6;
+}
+
+.contact-card.emergency {
+  border-left: 4px solid #ef4444;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-name {
+  color: var(--fg0);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-description {
+  color: var(--fg3);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.contact-details {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.contact-number {
+  color: #8b5cf6;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.contact-availability {
+  color: var(--fgSuccess);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 12px;
+}
+
+.contact-button {
+  background: var(--fgDanger);
+  border: none;
+  border-radius: 8px;
+  color: var(--fg0);
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* ===== CRISIS RESOURCES ===== */
+.crisis-resources {
+  margin-bottom: 40px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.resource-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.resource-card:hover {
+  background: var(--bg3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+.resource-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.resource-content {
+  margin-bottom: 20px;
+}
+
+.resource-title {
+  color: var(--fg0);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.resource-description {
+  color: var(--fg3);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.resource-button {
+  background: #8b5cf6;
+  border: none;
+  border-radius: 8px;
+  color: var(--fg0);
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.resource-button:hover {
+  background: #7c3aed;
+  transform: translateY(-1px);
+}
+
+/* ===== SAFETY REMINDERS ===== */
+.safety-reminders {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.reminders-list {
+  display: grid;
+  gap: 16px;
+}
+
+.reminder-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.reminder-icon {
+  font-size: 24px;
+  min-width: 30px;
+}
+
+.reminder-text {
+  color: var(--fg0);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ===== PROFESSIONAL HELP ===== */
+.professional-help {
+  margin-bottom: 40px;
+}
+
+.help-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.help-option {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.help-option:hover {
+  background: var(--bg3);
+  transform: translateY(-2px);
+}
+
+.option-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.option-content h4 {
+  color: var(--fg0);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.option-content p {
+  color: var(--fg3);
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.option-button {
+  background: #8b5cf6;
+  border: none;
+  border-radius: 8px;
+  color: var(--fg0);
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-button:hover {
+  background: #7c3aed;
+  transform: translateY(-1px);
+}
+
+/* ===== ALWAYS AVAILABLE ===== */
+.always-available {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.availability-icon {
+  font-size: 32px;
+  min-width: 40px;
+}
+
+.availability-content h4 {
+  color: var(--fg0);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.availability-content p {
+  color: var(--fg3);
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .crisis-support {
+    padding: 15px;
+  }
+
+  .emergency-alert {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .help-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .help-button {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .contact-card {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .contact-details {
+    justify-content: center;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .help-options {
+    grid-template-columns: 1fr;
+  }
+
+  .always-available {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .crisis-support {
+    padding: 12px;
+  }
+
+  .emergency-alert {
+    padding: 20px;
+  }
+
+  .alert-content h2 {
+    font-size: 20px;
+  }
+
+  .help-button {
+    padding: 20px;
+  }
+
+  .contact-card {
+    padding: 16px;
+  }
+
+  .resource-card {
+    padding: 20px;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .emergency-alert,
+  .alert-icon {
+    animation: none;
+  }
+  
+  * {
+    transition: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.help-button:focus,
+.contact-button:focus,
+.resource-button:focus,
+.option-button:focus {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
