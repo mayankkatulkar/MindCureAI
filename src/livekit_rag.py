@@ -15,18 +15,18 @@ import os
 logger = logging.getLogger("livekit_rag")
 
 # Load environment variables from the correct path
-env_path = Path(__file__).parent.parent / ".env.local"
+env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)
 
 # Configure LlamaIndex to use native Gemini models
 Settings.llm = GoogleGenAI(
-    model="models/gemini-1.5-flash",
+    model="gemini-2.0-flash",
     api_key=os.getenv("GOOGLE_API_KEY"),
     temperature=0.7,
 )
 
 Settings.embed_model = GoogleGenAIEmbedding(
-    model="models/text-embedding-004",
+    model="text-embedding-004",
     api_key=os.getenv("GOOGLE_API_KEY"),
 )
 

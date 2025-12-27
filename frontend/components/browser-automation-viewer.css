@@ -1,0 +1,217 @@
+/* Browser Automation Viewer Styles */
+
+.browser-viewer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.browser-viewer-container {
+    background: var(--bg1, #1a1a2e);
+    border: 1px solid var(--bg3, #333);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.browser-viewer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--bg2, #16213e);
+    border-bottom: 1px solid var(--bg3, #333);
+}
+
+.browser-viewer-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.browser-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--fg0, #fff);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #666;
+}
+
+.status-dot.running {
+    background: #3b82f6;
+    animation: pulse 1.5s infinite;
+}
+
+.status-dot.completed {
+    background: #10b981;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+.current-url {
+    font-size: 12px;
+    color: var(--fg3, #888);
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.close-button {
+    background: transparent;
+    border: none;
+    color: var(--fg3, #888);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.close-button:hover {
+    background: var(--bg3, #333);
+    color: var(--fg0, #fff);
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    height: 3px;
+    background: var(--bg3, #333);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+    transition: width 0.3s ease;
+}
+
+/* Screenshot Display */
+.screenshot-display {
+    flex: 1;
+    min-height: 400px;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f0f1a;
+    overflow: hidden;
+}
+
+.screenshot-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.loading-state,
+.error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: var(--fg3, #888);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--bg3, #333);
+    border-top-color: #8b5cf6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-state {
+    color: var(--fgDanger, #ef4444);
+}
+
+.error-icon {
+    font-size: 32px;
+}
+
+.error-state button {
+    background: var(--fgDanger, #ef4444);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.error-state button:hover {
+    filter: brightness(1.1);
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--bg2, #16213e);
+    border-top: 1px solid var(--bg3, #333);
+    font-size: 13px;
+}
+
+.status-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-text {
+    color: var(--fg3, #888);
+}
+
+.step-info {
+    color: var(--fg3, #888);
+}

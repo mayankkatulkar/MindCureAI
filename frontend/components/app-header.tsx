@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 export function AppHeader() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -24,8 +24,9 @@ export function AppHeader() {
     { href: '/therapist-directory', icon: '👩‍⚕️', label: 'Find Therapist' },
     { href: '/crisis-support', icon: '🚨', label: 'Crisis Support', isEmergency: true },
     { href: '/settings', icon: '⚙️', label: 'Settings' },
+    { href: '/logout', icon: '🚪', label: 'Logout', isLogout: true },
   ];
-  
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/40">
       <div className="mx-auto max-w-7xl px-3 sm:px-4 lg:px-6">
@@ -51,13 +52,17 @@ export function AppHeader() {
                 href={item.href}
                 className={cn(
                   "flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 hover:scale-105",
-                  pathname === item.href 
-                    ? item.isEmergency 
-                      ? "bg-red-500 text-white shadow-md" 
-                      : "bg-primary text-primary-foreground shadow-md"
+                  pathname === item.href
+                    ? item.isEmergency
+                      ? "bg-red-500 text-white shadow-md"
+                      : item.isLogout
+                        ? "bg-orange-500 text-white shadow-md"
+                        : "bg-primary text-primary-foreground shadow-md"
                     : item.isEmergency
                       ? "text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-red-500/20"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                      : item.isLogout
+                        ? "text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 border border-orange-500/20"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                 )}
               >
                 <span className="flex-shrink-0 text-sm">
@@ -94,13 +99,17 @@ export function AppHeader() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "flex flex-col items-center space-y-1 px-2 py-2 rounded-lg text-xs font-medium transition-colors",
-                    pathname === item.href 
-                      ? item.isEmergency 
-                        ? "bg-red-500 text-white" 
-                        : "bg-primary text-primary-foreground"
+                    pathname === item.href
+                      ? item.isEmergency
+                        ? "bg-red-500 text-white"
+                        : item.isLogout
+                          ? "bg-orange-500 text-white"
+                          : "bg-primary text-primary-foreground"
                       : item.isEmergency
                         ? "text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-red-500/20"
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                        : item.isLogout
+                          ? "text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 border border-orange-500/20"
+                          : "text-muted-foreground hover:text-foreground hover:bg-accent"
                   )}
                 >
                   <span className="flex-shrink-0">

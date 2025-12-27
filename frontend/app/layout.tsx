@@ -65,14 +65,16 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     .join('\n');
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <ApplyThemeScript />
         {styles && <style>{styles}</style>}
+        {/* Live2D Cubism 4 Core - Required for Live2D avatars */}
+        <script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js" />
       </head>
       <body className={`${publicSans.className} antialiased`}>
         <ConditionalHeader />
-        <main className="conditional-padding">
+        <main>
           {children}
         </main>
       </body>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { ReactNode, createContext, useContext } from 'react';
+import { Room } from 'livekit-client';
 import { useRoomContext } from '@livekit/components-react';
 import { useCallTraceManager } from '@/hooks/useCallTraceManager';
 
@@ -36,14 +37,15 @@ export function useCallTraceContext() {
 
 interface CallTraceProviderProps {
   children: ReactNode;
+  room?: Room;
 }
 
-export function CallTraceProvider({ children }: CallTraceProviderProps) {
+export function CallTraceProvider({ children, room }: CallTraceProviderProps) {
   // Always use the call trace manager, even if room is not connected
   let callTraceManager;
 
   try {
-    callTraceManager = useCallTraceManager();
+    callTraceManager = useCallTraceManager(room);
   } catch (error) {
     console.warn('Could not initialize call trace manager, error:', error);
   }

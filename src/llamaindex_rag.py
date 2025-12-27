@@ -22,13 +22,13 @@ logger = logging.getLogger(__name__)
 
 # Configure LlamaIndex to use native Gemini models
 Settings.llm = GoogleGenAI(
-    model="models/gemini-1.5-flash",
+    model="gemini-2.0-flash",
     api_key=os.getenv("GOOGLE_API_KEY"),
     temperature=0.7,
 )
 
 Settings.embed_model = GoogleGenAIEmbedding(
-    model="models/text-embedding-004",
+    model="text-embedding-004",
     api_key=os.getenv("GOOGLE_API_KEY"),
 )
 

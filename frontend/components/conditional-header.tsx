@@ -1,17 +1,17 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { AppHeader } from './app-header';
+import { SidebarNav } from './sidebar-nav';
 
 export function ConditionalHeader() {
   const pathname = usePathname();
-  
-  // Don't show header on landing page and auth pages as they have their own navigation
-  const hideHeader = pathname === '/landing' || pathname === '/login' || pathname === '/signup';
-  
-  if (hideHeader) {
+
+  // Don't show navigation on landing page and auth pages as they have their own
+  const hideNav = pathname === '/landing' || pathname === '/login' || pathname === '/signup';
+
+  if (hideNav) {
     return null;
   }
-  
-  return <AppHeader />;
+
+  return <SidebarNav />;
 }

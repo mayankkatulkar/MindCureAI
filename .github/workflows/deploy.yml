@@ -1,0 +1,84 @@
+name: Deploy MindCureAI to AWS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY_FRONTEND: mindcureai-frontend
+  ECR_REPOSITORY_AGENT: mindcureai-agent
+  ECS_CLUSTER: mindcureai-cluster
+  ECS_SERVICE_FRONTEND: mindcureai-frontend-service
+  ECS_SERVICE_AGENT: mindcureai-agent-service
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push Frontend image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest -f frontend/Dockerfile.prod ./frontend
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest
+
+      - name: Build and push Agent image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:latest -f Dockerfile .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:latest
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Update Frontend ECS Service
+        run: |
+          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE_FRONTEND --force-new-deployment
+
+      - name: Update Agent ECS Service
+        run: |
+          aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE_AGENT --force-new-deployment
+
+      - name: Wait for Frontend deployment
+        run: |
+          aws ecs wait services-stable --cluster $ECS_CLUSTER --services $ECS_SERVICE_FRONTEND
+          echo "Frontend deployment completed!"
+
+      - name: Wait for Agent deployment
+        run: |
+          aws ecs wait services-stable --cluster $ECS_CLUSTER --services $ECS_SERVICE_AGENT
+          echo "Agent deployment completed!"

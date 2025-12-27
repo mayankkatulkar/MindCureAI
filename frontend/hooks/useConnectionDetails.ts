@@ -12,8 +12,10 @@ export default function useConnectionDetails() {
   // own participant name, and possibly to choose from existing rooms to join.
 
   const [connectionDetails, setConnectionDetails] = useState<ConnectionDetails | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchConnectionDetails = useCallback(() => {
+    setIsLoading(true);
     setConnectionDetails(null);
     const url = new URL(
       process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ?? '/api/connection-details',
@@ -26,12 +28,15 @@ export default function useConnectionDetails() {
       })
       .catch((error) => {
         console.error('Error fetching connection details:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
-  useEffect(() => {
-    fetchConnectionDetails();
-  }, [fetchConnectionDetails]);
+  // IMPORTANT: Do NOT auto-fetch on mount!
+  // This was causing Gemini API quota to be consumed on every page load.
+  // Connection details should only be fetched when user clicks "Start Session".
 
-  return { connectionDetails, refreshConnectionDetails: fetchConnectionDetails };
+  return { connectionDetails, refreshConnectionDetails: fetchConnectionDetails, isLoading };
 }

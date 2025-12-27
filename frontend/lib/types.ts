@@ -19,8 +19,22 @@ export interface AppConfig {
 
 export interface SandboxConfig {
   [key: string]:
-    | { type: 'string'; value: string }
-    | { type: 'number'; value: number }
-    | { type: 'boolean'; value: boolean }
-    | null;
+  | { type: 'string'; value: string }
+  | { type: 'number'; value: number }
+  | { type: 'boolean'; value: boolean }
+  | null;
+}
+
+export interface ChatSession {
+  id: string;
+  title: string;
+  summary?: string;
+  voice_used: string;
+  genz_mode: boolean;
+  duration_seconds: number;
+  mood_before?: string;
+  mood_after?: string;
+  created_at: string;
+  transcript?: any[];
+  metadata?: any;
 }

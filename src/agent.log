@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/mayankkatulkar/Desktop/mindcure ai/MindCureAI/src/agent.py", line 9, in <module>
+    from livekit.agents import (
+    ...<10 lines>...
+    )
+ModuleNotFoundError: No module named 'livekit'

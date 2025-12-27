@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { AppHeader } from '@/components/app-header';
-import './dashboard.css';
+import Link from 'next/link';
+import { motion } from 'motion/react';
 
 const Dashboard = () => {
   const router = useRouter();
@@ -24,7 +24,6 @@ const Dashboard = () => {
     goalsAchieved: 4
   });
 
-  // Fetch dashboard data from API
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
@@ -43,13 +42,12 @@ const Dashboard = () => {
         setIsConnected(false);
       }
     };
-    
+
     fetchDashboardData();
-    const interval = setInterval(fetchDashboardData, 30000); // Refresh every 30 seconds
+    const interval = setInterval(fetchDashboardData, 30000);
     return () => clearInterval(interval);
   }, []);
 
-  // Update progress when activities are completed
   const updateProgress = async (activity: string) => {
     try {
       const response = await fetch('/api/dashboard', {
@@ -57,7 +55,7 @@ const Dashboard = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ activity })
       });
-      
+
       if (response.ok) {
         const result = await response.json();
         setMentalHealthScore(result.data.mentalHealthScore);
@@ -69,162 +67,190 @@ const Dashboard = () => {
     }
   };
 
-  const navigateToPage = (path: string) => {
-    router.push(path);
-  };
-
   return (
-    <>
-      <AppHeader />
-      <div className="dashboard-page" style={{ paddingTop: '4rem' }}>
-      {/* Connection Status */}
-      <div className="connection-banner">
-        <div className={`connection-indicator ${isConnected ? 'connected' : 'disconnected'}`}>
-          <span className="status-dot"></span>
-          {isConnected ? 'AI System Connected' : 'Connecting to AI System...'}
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-950 dark:to-slate-900">
+      <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
 
-      {/* Main Scores Section */}
-      <div className="scores-section">
-        <div className="score-card primary">
-          <div className="score-header">
-            <h3>Mental Wellness Score</h3>
-            <span className="score-trend positive">+{quickStats.weeklyProgress}</span>
+        {/* Connection Status */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6"
+        >
+          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm ${isConnected
+              ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300'
+              : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+            }`}>
+            <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-yellow-500 animate-pulse'}`} />
+            {isConnected ? 'AI System Connected' : 'Connecting...'}
           </div>
-          <div className="score-display">
-            <div className="score-circle">
-              <div className="score-fill" style={{ '--fill': `${mentalHealthScore}%` } as React.CSSProperties}>
-                <span className="score-value">{mentalHealthScore}</span>
+        </motion.div>
+
+        {/* Main Scores */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-xl"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold opacity-90">Mental Wellness Score</h3>
+              <span className="px-2 py-1 bg-white/20 rounded-full text-sm">
+                {quickStats.weeklyProgress}
+              </span>
+            </div>
+            <div className="flex items-center gap-6">
+              <div className="relative w-24 h-24">
+                <svg className="w-full h-full transform -rotate-90">
+                  <circle cx="48" cy="48" r="42" stroke="rgba(255,255,255,0.2)" strokeWidth="8" fill="none" />
+                  <circle
+                    cx="48" cy="48" r="42"
+                    stroke="white" strokeWidth="8" fill="none"
+                    strokeDasharray={`${mentalHealthScore * 2.64} 264`}
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold">{mentalHealthScore}</span>
+              </div>
+              <div>
+                <p className="text-lg font-medium">Good Progress</p>
+                <p className="text-white/70 text-sm">Keep up the great work!</p>
               </div>
             </div>
-            <div className="score-info">
-              <p className="score-status">Good Progress</p>
-              <p className="score-desc">Keep up the great work!</p>
-            </div>
-          </div>
-        </div>
+          </motion.div>
 
-        <div className="score-card secondary">
-          <div className="score-header">
-            <h3>Productivity Score</h3>
-            <span className="score-trend positive">+8</span>
-          </div>
-          <div className="score-display">
-            <div className="score-circle">
-              <div className="score-fill" style={{ '--fill': `${productivityScore}%` } as React.CSSProperties}>
-                <span className="score-value">{productivityScore}</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50 shadow-lg"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-foreground">Productivity Score</h3>
+              <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm">
+                +8
+              </span>
+            </div>
+            <div className="flex items-center gap-6">
+              <div className="relative w-24 h-24">
+                <svg className="w-full h-full transform -rotate-90">
+                  <circle cx="48" cy="48" r="42" stroke="currentColor" className="text-slate-200 dark:text-slate-700" strokeWidth="8" fill="none" />
+                  <circle
+                    cx="48" cy="48" r="42"
+                    stroke="url(#gradient)" strokeWidth="8" fill="none"
+                    strokeDasharray={`${productivityScore * 2.64} 264`}
+                    strokeLinecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="gradient">
+                      <stop offset="0%" stopColor="#8b5cf6" />
+                      <stop offset="100%" stopColor="#ec4899" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-foreground">{productivityScore}</span>
+              </div>
+              <div>
+                <p className="text-lg font-medium text-foreground">Excellent</p>
+                <p className="text-muted-foreground text-sm">Highly productive week</p>
               </div>
             </div>
-            <div className="score-info">
-              <p className="score-status">Excellent</p>
-              <p className="score-desc">Highly productive week</p>
-            </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Quick Stats */}
-      <div className="quick-stats">
-        <div className="stat-item">
-          <div className="stat-icon">🔥</div>
-          <div className="stat-content">
-            <span className="stat-value">{quickStats.streakDays}</span>
-            <span className="stat-label">Day Streak</span>
-          </div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-icon">🎯</div>
-          <div className="stat-content">
-            <span className="stat-value">{quickStats.goalsAchieved}</span>
-            <span className="stat-label">Goals Achieved</span>
-          </div>
-        </div>
-        <div className="stat-item">
-          <div className="stat-icon">💬</div>
-          <div className="stat-content">
-            <span className="stat-value">{quickStats.sessionsCompleted}</span>
-            <span className="stat-label">AI Sessions</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Actions */}
-      <div className="quick-actions">
-        <h3 className="section-title">Quick Actions</h3>
-        <div className="action-grid">
-          <button className="action-card primary" onClick={() => {
-            updateProgress('therapy');
-            navigateToPage('/voice-chat');
-          }}>
-            <div className="action-icon">🤖</div>
-            <div className="action-content">
-              <h4>Talk to AI Now</h4>
-              <p>Start your therapy session</p>
-            </div>
-          </button>
-          
-          <button className="action-card" onClick={() => navigateToPage('/therapist-directory')}>
-            <div className="action-icon">👩‍⚕️</div>
-            <div className="action-content">
-              <h4>Find Therapist</h4>
-              <p>Book professional help</p>
-            </div>
-          </button>
-          
-          <button className="action-card" onClick={() => navigateToPage('/peer-support')}>
-            <div className="action-icon">🤝</div>
-            <div className="action-content">
-              <h4>Peer Support</h4>
-              <p>Connect with others</p>
-            </div>
-          </button>
-          
-          <button className="action-card emergency" onClick={() => navigateToPage('/crisis-support')}>
-            <div className="action-icon">🚨</div>
-            <div className="action-content">
-              <h4>Emergency Support</h4>
-              <p>Immediate help available</p>
-            </div>
-          </button>
-        </div>
-      </div>
-
-      {/* Recent Activity */}
-      <div className="recent-activity">
-        <h3 className="section-title">Recent Activity</h3>
-        <div className="activity-list">
-          {recentActivity.map((activity, index) => (
-            <div key={index} className="activity-item">
-              <div className="activity-icon">{activity.icon}</div>
-              <div className="activity-content">
-                <p className="activity-text">{activity.text}</p>
-                <span className="activity-time">{activity.time}</span>
-              </div>
+        {/* Quick Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="grid grid-cols-3 gap-4 mb-8"
+        >
+          {[
+            { icon: '🔥', value: quickStats.streakDays, label: 'Day Streak' },
+            { icon: '🎯', value: quickStats.goalsAchieved, label: 'Goals Achieved' },
+            { icon: '💬', value: quickStats.sessionsCompleted, label: 'AI Sessions' },
+          ].map((stat, i) => (
+            <div key={i} className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50 text-center">
+              <span className="text-2xl">{stat.icon}</span>
+              <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Today's Focus */}
-      <div className="todays-focus">
-        <h3 className="section-title">Today's Focus</h3>
-        <div className="focus-card">
-          <div className="focus-icon">🧘</div>
-          <div className="focus-content">
-            <h4>Mindful Breathing</h4>
-            <p>Take 10 minutes for a guided breathing exercise to center yourself and reduce stress.</p>
-            <button className="focus-action" onClick={() => {
-              updateProgress('task');
-              navigateToPage('/voice-chat');
-            }}>
-              Start Now
-            </button>
+        {/* Quick Actions */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-8"
+        >
+          <h3 className="text-xl font-bold text-foreground mb-4">Quick Actions</h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              href="/voice-chat"
+              onClick={() => updateProgress('therapy')}
+              className="group bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl p-5 text-white shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              <span className="text-3xl mb-3 block">🤖</span>
+              <h4 className="font-semibold">Talk to AI Now</h4>
+              <p className="text-white/70 text-sm">Start your therapy session</p>
+            </Link>
+
+            <Link
+              href="/therapist-directory"
+              className="group bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-xl p-5 border border-slate-200/50 dark:border-slate-700/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              <span className="text-3xl mb-3 block">👩‍⚕️</span>
+              <h4 className="font-semibold text-foreground">Find Therapist</h4>
+              <p className="text-muted-foreground text-sm">Book professional help</p>
+            </Link>
+
+            <Link
+              href="/peer-support"
+              className="group bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-xl p-5 border border-slate-200/50 dark:border-slate-700/50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              <span className="text-3xl mb-3 block">🤝</span>
+              <h4 className="font-semibold text-foreground">Peer Support</h4>
+              <p className="text-muted-foreground text-sm">Connect with others</p>
+            </Link>
+
+            <Link
+              href="/crisis-support"
+              className="group bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 rounded-xl p-5 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              <span className="text-3xl mb-3 block">🚨</span>
+              <h4 className="font-semibold text-red-700 dark:text-red-400">Emergency Support</h4>
+              <p className="text-red-600/70 dark:text-red-300/70 text-sm">Immediate help available</p>
+            </Link>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Recent Activity */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <h3 className="text-xl font-bold text-foreground mb-4">Recent Activity</h3>
+          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl rounded-xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
+            {recentActivity.map((activity, index) => (
+              <div
+                key={index}
+                className={`flex items-center gap-4 p-4 ${index < recentActivity.length - 1 ? 'border-b border-slate-200/50 dark:border-slate-700/50' : ''
+                  }`}
+              >
+                <span className="text-2xl">{activity.icon}</span>
+                <div className="flex-1">
+                  <p className="text-foreground font-medium">{activity.text}</p>
+                  <p className="text-sm text-muted-foreground">{activity.time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 

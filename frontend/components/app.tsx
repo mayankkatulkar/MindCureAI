@@ -5,12 +5,14 @@ import { Room, RoomEvent } from 'livekit-client';
 import { motion } from 'motion/react';
 import { RoomAudioRenderer, RoomContext, StartAudio } from '@livekit/components-react';
 import { toastAlert } from '@/components/alert-toast';
-import { useCallTraceContext } from '@/components/call-trace-provider';
+import { CallTraceProvider } from '@/components/call-trace-provider';
+import { CallTraceHandler } from '@/components/call-trace-handler';
 import { SessionView } from '@/components/session-view';
 import { Toaster } from '@/components/ui/sonner';
 import { Welcome } from '@/components/welcome';
 import useConnectionDetails from '@/hooks/useConnectionDetails';
 import type { AppConfig } from '@/lib/types';
+import type { GeminiVoice } from '@/components/voice-settings';
 
 const MotionWelcome = motion.create(Welcome);
 const MotionSessionView = motion.create(SessionView);
@@ -23,17 +25,17 @@ export function App({ appConfig }: AppProps) {
   const room = useMemo(() => new Room(), []);
   const [sessionStarted, setSessionStarted] = useState(false);
   const [genZMode, setGenZMode] = useState(false);
-  const { connectionDetails, refreshConnectionDetails } = useConnectionDetails();
-  const { startSession, endSession, isInRoomContext } = useCallTraceContext();
+  const [selectedVoice, setSelectedVoice] = useState<GeminiVoice>('Kore');
+  const { connectionDetails, refreshConnectionDetails, isLoading } = useConnectionDetails();
+  // const { startSession, endSession, isInRoomContext } = useCallTraceContext(); // Removed
+  const [isConnecting, setIsConnecting] = useState(false);
 
   useEffect(() => {
     const onDisconnected = async () => {
-      // Save call trace when session ends
-      if (isInRoomContext) {
-        await endSession();
-      }
+      // Logic for saving call trace moved to CallTraceHandler
       setSessionStarted(false);
-      refreshConnectionDetails();
+      setIsConnecting(false);
+      // Don't auto-refresh connection details - wait for user to click again
     };
     const onMediaDevicesError = (error: Error) => {
       toastAlert({
@@ -47,7 +49,7 @@ export function App({ appConfig }: AppProps) {
       room.off(RoomEvent.Disconnected, onDisconnected);
       room.off(RoomEvent.MediaDevicesError, onMediaDevicesError);
     };
-  }, [room, refreshConnectionDetails, endSession, isInRoomContext]);
+  }, [room, refreshConnectionDetails]);
 
   useEffect(() => {
     let aborted = false;
@@ -58,8 +60,11 @@ export function App({ appConfig }: AppProps) {
         }),
         room.connect(connectionDetails.serverUrl, connectionDetails.participantToken),
       ]).then(() => {
-        // Set participant metadata after connection
-        const participantMetadata = genZMode ? 'genz_mode=true' : 'genz_mode=false';
+        // Set participant metadata with voice and mode preferences
+        const participantMetadata = JSON.stringify({
+          genz_mode: genZMode,
+          voice: selectedVoice,
+        });
         room.localParticipant.setMetadata(participantMetadata);
       }).catch((error) => {
         if (aborted) {
@@ -81,32 +86,27 @@ export function App({ appConfig }: AppProps) {
       aborted = true;
       room.disconnect();
     };
-  }, [room, sessionStarted, connectionDetails, appConfig.isPreConnectBufferEnabled, genZMode]);
+  }, [room, sessionStarted, connectionDetails, appConfig.isPreConnectBufferEnabled, genZMode, selectedVoice]);
 
   const { startButtonText } = appConfig;
 
-  // Start call trace session when session starts
+  // Fetch connection details when session starts (lazy loading to save API quota)
   useEffect(() => {
-    if (sessionStarted) {
-      startSession();
+    if (sessionStarted && !connectionDetails && !isLoading) {
+      setIsConnecting(true);
+      refreshConnectionDetails();
     }
-  }, [sessionStarted, startSession]);
+  }, [sessionStarted, connectionDetails, isLoading, refreshConnectionDetails]);
 
-  // End call trace session when session ends
-  useEffect(() => {
-    return () => {
-      if (sessionStarted) {
-        endSession();
-      }
-    };
-  }, [sessionStarted, endSession]);
+  // Call trace session management moved to CallTraceHandler
 
   return (
-    <>
+    <CallTraceProvider room={room}>
       <MotionWelcome
         key="welcome"
         startButtonText={startButtonText}
         onStartCall={() => setSessionStarted(true)}
+        onVoiceChange={setSelectedVoice}
         onGenZModeChange={setGenZMode}
         disabled={sessionStarted}
         initial={{ opacity: 0 }}
@@ -115,6 +115,7 @@ export function App({ appConfig }: AppProps) {
       />
 
       <RoomContext.Provider value={room}>
+        <CallTraceHandler room={room} sessionStarted={sessionStarted} />
         <RoomAudioRenderer />
         <StartAudio label="Start Audio" />
         {/* --- */}
@@ -134,6 +135,6 @@ export function App({ appConfig }: AppProps) {
       </RoomContext.Provider>
 
       <Toaster />
-    </>
+    </CallTraceProvider>
   );
 }

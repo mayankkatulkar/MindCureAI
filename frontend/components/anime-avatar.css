@@ -1,0 +1,390 @@
+/* Anime Avatar CSS - Hot anime waifu style */
+
+.anime-avatar-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background glow */
+.avatar-glow {
+    position: absolute;
+    inset: -30px;
+    background: radial-gradient(circle at center,
+            rgba(244, 114, 182, 0.4) 0%,
+            rgba(168, 85, 247, 0.3) 30%,
+            rgba(139, 92, 246, 0.2) 50%,
+            transparent 70%);
+    border-radius: 50%;
+    filter: blur(30px);
+    pointer-events: none;
+}
+
+/* Main body container */
+.avatar-body {
+    position: relative;
+    width: 280px;
+    height: 350px;
+}
+
+/* Face base */
+.face {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 200px;
+    background: linear-gradient(180deg, #ffecd2 0%, #fcd5ce 50%, #ffb4a2 100%);
+    border-radius: 90px 90px 70px 70px;
+    box-shadow:
+        inset 0 -20px 40px rgba(255, 180, 162, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Eyes container */
+.eyes {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 45px;
+}
+
+/* Individual eye */
+.eye {
+    width: 45px;
+    height: 50px;
+    position: relative;
+    transition: all 0.15s ease;
+}
+
+.eye.blink {
+    height: 4px !important;
+    overflow: hidden;
+}
+
+.eye.blink .eye-white {
+    transform: scaleY(0.1);
+}
+
+.eye-white {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50% 50% 45% 45%;
+    overflow: hidden;
+    box-shadow:
+        inset 0 5px 15px rgba(0, 0, 0, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.15s ease;
+}
+
+.iris {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 36px;
+    background: linear-gradient(180deg, #a855f7 0%, #7c3aed 50%, #5b21b6 100%);
+    border-radius: 50%;
+    box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pupil {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 16px;
+    background: #1a1a2e;
+    border-radius: 50%;
+}
+
+.eye-shine {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.eye-shine.small {
+    top: 18px;
+    left: 16px;
+    width: 5px;
+    height: 5px;
+    opacity: 0.7;
+}
+
+/* Eyebrows */
+.eyebrows {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 60px;
+}
+
+.eyebrow {
+    width: 35px;
+    height: 4px;
+    background: #4a3728;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.eyebrow.left {
+    transform: rotate(-5deg);
+}
+
+.eyebrow.right {
+    transform: rotate(5deg);
+}
+
+.eyebrow.raised {
+    transform: translateY(-5px);
+}
+
+.eyebrow.left.raised {
+    transform: translateY(-5px) rotate(-10deg);
+}
+
+.eyebrow.right.raised {
+    transform: translateY(-5px) rotate(10deg);
+}
+
+/* Nose */
+.nose {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 12px;
+    background: transparent;
+    border-left: 2px solid rgba(180, 120, 100, 0.3);
+    border-radius: 0 0 50% 50%;
+}
+
+/* Blush */
+.blush {
+    position: absolute;
+    top: 115px;
+    width: 30px;
+    height: 15px;
+    background: rgba(255, 150, 150, 0.4);
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.blush.left {
+    left: 20px;
+}
+
+.blush.right {
+    right: 20px;
+}
+
+/* Mouth */
+.mouth {
+    position: absolute;
+    top: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 8px;
+    background: #e879a9;
+    border-radius: 0 0 50% 50%;
+    transition: all 0.1s ease;
+}
+
+.mouth.speaking {
+    height: 15px;
+    width: 18px;
+    border-radius: 40% 40% 50% 50%;
+    background: linear-gradient(180deg, #d9475b 0%, #922035 100%);
+}
+
+/* Hair back */
+.hair-back {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 320px;
+    background: linear-gradient(180deg, #f472b6 0%, #db2777 30%, #be185d 100%);
+    border-radius: 110px 110px 80px 80px;
+    z-index: -1;
+}
+
+/* Hair front */
+.hair-front {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 120px;
+    z-index: 10;
+}
+
+/* Bangs */
+.bangs {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2px;
+}
+
+.bang-strand {
+    width: 28px;
+    height: 80px;
+    background: linear-gradient(180deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+    border-radius: 0 0 50% 50%;
+    transform-origin: top center;
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bang-strand:nth-child(1) {
+    height: 70px;
+}
+
+.bang-strand:nth-child(2) {
+    height: 85px;
+}
+
+.bang-strand:nth-child(3) {
+    height: 90px;
+}
+
+.bang-strand:nth-child(4) {
+    height: 95px;
+}
+
+.bang-strand:nth-child(5) {
+    height: 90px;
+}
+
+.bang-strand:nth-child(6) {
+    height: 85px;
+}
+
+.bang-strand:nth-child(7) {
+    height: 70px;
+}
+
+/* Side hair */
+.side-hair {
+    position: absolute;
+    top: 60px;
+    width: 40px;
+    height: 250px;
+    background: linear-gradient(180deg, #f472b6 0%, #db2777 100%);
+    border-radius: 0 0 50% 50%;
+}
+
+.side-hair.left {
+    left: -10px;
+    transform: rotate(15deg);
+}
+
+.side-hair.right {
+    right: -10px;
+    transform: rotate(-15deg);
+}
+
+/* Sparkle emoji */
+.sparkle {
+    font-size: 20px;
+    pointer-events: none;
+}
+
+/* Status badge */
+.avatar-status {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(244, 114, 182, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+}
+
+.status-dot.speaking {
+    background: #f472b6;
+    animation: pulse-dot 0.5s ease-in-out infinite;
+}
+
+.status-dot.thinking {
+    background: #a855f7;
+    animation: pulse-dot 1s ease-in-out infinite;
+}
+
+.status-dot.listening {
+    background: #34d399;
+}
+
+.status-dot.connecting {
+    background: #fbbf24;
+    animation: pulse-dot 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.3);
+    }
+}
+
+.status-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #f9fafb;
+    white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .avatar-body {
+        transform: scale(0.8);
+    }
+
+    .avatar-status {
+        bottom: -20px;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,1474 @@
+
+> agent-starter-react@0.1.0 dev /Users/mayankkatulkar/Desktop/mindcure ai/MindCureAI/frontend
+> next dev --turbopack
+
+   ▲ Next.js 15.4.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.243.70.222:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Compiled middleware in 138ms
+ ✓ Ready in 858ms
+ ○ Compiling /voice-chat ...
+ ✓ Compiled /voice-chat in 1999ms
+Local storage is not available.
+Local storage is not available.
+ GET /voice-chat 200 in 59ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 853ms
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+ GET /favicon.ico?favicon.2685530d.ico 200 in 1080ms
+ GET /api/chat-sessions 200 in 887ms
+Local storage is not available.
+ GET /voice-chat 200 in 85ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 284ms
+ GET /api/chat-sessions 200 in 210ms
+ ✓ Compiled /api/connection-details in 218ms
+ GET /api/connection-details 200 in 365ms
+ POST /api/chat-sessions 200 in 177ms
+Local storage is not available.
+ GET /voice-chat 200 in 288ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 658ms
+ GET /api/chat-sessions 200 in 425ms
+ ✓ Compiled /dashboard in 337ms
+ GET /dashboard 200 in 388ms
+ ✓ Compiled /api/dashboard in 67ms
+ GET /api/dashboard 200 in 256ms
+ GET /voice-chat 200 in 47ms
+ GET /api/chat-sessions 200 in 180ms
+ GET /api/chat-sessions 200 in 144ms
+ ✓ Compiled in 207ms
+ ✓ Compiled /api/analysis in 257ms
+Analysis API Error: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp
+Please retry in 2.247418524s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"model":"gemini-2.0-flash-exp","location":"global"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"2s"}]
+    at async POST (app/api/analysis/route.ts:46:23)
+  44 |         const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  45 |
+> 46 |         const result = await model.generateContent(prompt);
+     |                       ^
+  47 |         const response = result.response;
+  48 |         const text = response.text();
+  49 | {
+  status: 429,
+  statusText: 'Too Many Requests',
+  errorDetails: [Array]
+}
+ POST /api/analysis 500 in 524ms
+Analysis API Error: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+Please retry in 54.768417945s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"54s"}]
+    at async POST (app/api/analysis/route.ts:46:23)
+  44 |         const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  45 |
+> 46 |         const result = await model.generateContent(prompt);
+     |                       ^
+  47 |         const response = result.response;
+  48 |         const text = response.text();
+  49 | {
+  status: 429,
+  statusText: 'Too Many Requests',
+  errorDetails: [Array]
+}
+ POST /api/analysis 500 in 187ms
+Analysis API Error: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+Please retry in 48.723898206s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"48s"}]
+    at async POST (app/api/analysis/route.ts:46:23)
+  44 |         const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  45 |
+> 46 |         const result = await model.generateContent(prompt);
+     |                       ^
+  47 |         const response = result.response;
+  48 |         const text = response.text();
+  49 | {
+  status: 429,
+  statusText: 'Too Many Requests',
+  errorDetails: [Array]
+}
+ POST /api/analysis 500 in 171ms
+Analysis API Error: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+Please retry in 45.336480172s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"model":"gemini-2.0-flash-exp","location":"global"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"45s"}]
+    at async POST (app/api/analysis/route.ts:46:23)
+  44 |         const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  45 |
+> 46 |         const result = await model.generateContent(prompt);
+     |                       ^
+  47 |         const response = result.response;
+  48 |         const text = response.text();
+  49 | {
+  status: 429,
+  statusText: 'Too Many Requests',
+  errorDetails: [Array]
+}
+ POST /api/analysis 500 in 136ms
+Analysis API Error: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp
+Please retry in 41.015407513s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"model":"gemini-2.0-flash-exp","location":"global"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"41s"}]
+    at async POST (app/api/analysis/route.ts:46:23)
+  44 |         const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  45 |
+> 46 |         const result = await model.generateContent(prompt);
+     |                       ^
+  47 |         const response = result.response;
+  48 |         const text = response.text();
+  49 | {
+  status: 429,
+  statusText: 'Too Many Requests',
+  errorDetails: [Array]
+}
+ POST /api/analysis 500 in 219ms
+Local storage is not available.
+ GET /voice-chat 200 in 351ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 260ms
+ GET /api/chat-sessions 200 in 159ms
+Analysis API Error: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp
+Please retry in 30.332708124s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"model":"gemini-2.0-flash-exp","location":"global"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash-exp"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"30s"}]
+    at async POST (app/api/analysis/route.ts:46:23)
+  44 |         const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+  45 |
+> 46 |         const result = await model.generateContent(prompt);
+     |                       ^
+  47 |         const response = result.response;
+  48 |         const text = response.text();
+  49 | {
+  status: 429,
+  statusText: 'Too Many Requests',
+  errorDetails: [Array]
+}
+ POST /api/analysis 500 in 161ms
+Local storage is not available.
+ GET /voice-chat 200 in 83ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 295ms
+ GET /api/chat-sessions 200 in 155ms
+ POST /api/analysis 200 in 1408ms
+ PATCH /api/chat-sessions 200 in 132ms
+Local storage is not available.
+ GET /voice-chat 200 in 61ms
+ GET /api/chat-sessions 200 in 121ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 308ms
+ POST /api/analysis 200 in 1044ms
+ PATCH /api/chat-sessions 200 in 161ms
+Local storage is not available.
+ GET /voice-chat 200 in 77ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 263ms
+ GET /api/chat-sessions 200 in 152ms
+ POST /api/analysis 200 in 1175ms
+ PATCH /api/chat-sessions 200 in 492ms
+Local storage is not available.
+ GET /voice-chat 200 in 85ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 236ms
+ GET /api/chat-sessions 200 in 275ms
+ GET /voice-chat 200 in 64ms
+ GET /voice-chat 200 in 38ms
+ GET /voice-chat 200 in 34ms
+Local storage is not available.
+ GET /voice-chat 200 in 82ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 228ms
+ GET /api/chat-sessions 200 in 212ms
+ ✓ Compiled / in 272ms
+ GET / 307 in 313ms
+ ✓ Compiled /landing in 235ms
+ GET /landing 200 in 294ms
+ GET /dashboard 200 in 52ms
+ GET /api/dashboard 200 in 180ms
+ GET /api/dashboard 200 in 144ms
+ ✓ Compiled /peer-support in 188ms
+ GET /peer-support 200 in 211ms
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+ ✓ Compiled /api/peer-stats in 120ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 196ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 296ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 100ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 164ms
+ ✓ Compiled /settings in 224ms
+ GET /settings 200 in 256ms
+ ✓ Compiled /api/user/settings in 101ms
+ GET /api/user/settings 200 in 225ms
+ GET /api/user/api-key 200 in 237ms
+ GET /api/user/settings 200 in 141ms
+ GET /api/user/api-key 200 in 152ms
+ ✓ Compiled /logout in 83ms
+ GET /logout 307 in 171ms
+ GET /landing 200 in 23ms
+ ✓ Compiled /signup in 269ms
+ GET /signup 200 in 295ms
+ ✓ Compiled /login in 254ms
+ GET /login 200 in 285ms
+ GET /voice-chat 200 in 39ms
+ GET /voice-chat 200 in 24ms
+ GET /api/chat-sessions 200 in 168ms
+ GET /api/chat-sessions 200 in 147ms
+ GET /api/connection-details 200 in 161ms
+ POST /api/chat-sessions 200 in 220ms
+Local storage is not available.
+ GET /voice-chat 200 in 104ms
+ GET /api/chat-sessions 200 in 136ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 277ms
+ POST /api/analysis 200 in 1150ms
+ PATCH /api/chat-sessions 200 in 119ms
+Local storage is not available.
+ GET /voice-chat 200 in 73ms
+ GET /api/chat-sessions 200 in 160ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 227ms
+ ✓ Compiled /therapist-directory in 308ms
+ GET /therapist-directory 200 in 339ms
+ ✓ Compiled /api/therapist in 95ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 171ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 74ms
+ GET /voice-chat 200 in 55ms
+ GET /api/chat-sessions 200 in 164ms
+ GET /api/chat-sessions 200 in 157ms
+ GET /therapist-directory 200 in 49ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 93ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 86ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist?specialty=anxiety 200 in 490ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist?specialty=trauma 200 in 88ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 73ms
+ GET /peer-support 200 in 37ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 62ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 218ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 125ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 170ms
+ GET /settings 200 in 47ms
+ GET /api/user/api-key 200 in 181ms
+ GET /api/user/settings 200 in 249ms
+ GET /api/user/api-key 200 in 161ms
+ GET /api/user/settings 200 in 152ms
+ ✓ Compiled /pricing in 278ms
+ GET /pricing 200 in 307ms
+ GET /voice-chat 200 in 41ms
+ GET /api/chat-sessions 200 in 231ms
+ GET /api/chat-sessions 200 in 173ms
+ GET /peer-support 200 in 70ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 170ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 409ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 186ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 293ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 321ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 214ms
+ GET /voice-chat 200 in 45ms
+ GET /api/chat-sessions 200 in 427ms
+ GET /api/chat-sessions 200 in 211ms
+ GET / 307 in 218ms
+ GET /landing 200 in 79ms
+ GET /login 200 in 43ms
+ GET /voice-chat 200 in 52ms
+ GET /voice-chat 200 in 26ms
+ GET /api/chat-sessions 200 in 384ms
+ GET /api/chat-sessions 200 in 241ms
+ GET /peer-support 200 in 60ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 258ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 263ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 372ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 86ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 162ms
+ GET /pricing 200 in 43ms
+ GET /voice-chat 200 in 45ms
+ GET /api/chat-sessions 200 in 469ms
+ GET /api/chat-sessions 200 in 232ms
+ GET /voice-chat 200 in 55ms
+Local storage is not available.
+ GET /voice-chat 200 in 83ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 230ms
+ GET /api/chat-sessions 200 in 203ms
+ ✓ Compiled in 129ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 851ms
+ POST /api/analysis 500 in 1063ms
+ POST /api/analysis 500 in 47ms
+ GET /settings 200 in 37ms
+ GET /api/user/settings 200 in 709ms
+ GET /api/user/api-key 200 in 622ms
+ GET /api/user/settings 200 in 303ms
+ GET /api/user/api-key 200 in 338ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 72ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 18ms
+ GET /favicon.ico 500 in 46ms
+ GET /settings 200 in 99ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 23ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 24ms
+ GET /favicon.ico 500 in 14ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 27ms
+ GET /favicon.ico 500 in 21ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 51ms
+ GET /favicon.ico 500 in 17ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 20ms
+ GET /favicon.ico 500 in 12ms
+ GET /settings 200 in 83ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 17ms
+ GET /favicon.ico 500 in 20ms
+ GET /favicon.ico 500 in 13ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 26ms
+ GET /favicon.ico 500 in 13ms
+ GET /settings 200 in 89ms
+ GET /api/user/api-key 200 in 110ms
+ GET /api/user/settings 200 in 157ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 21ms
+ GET /favicon.ico 500 in 17ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 25ms
+ GET /favicon.ico 500 in 12ms
+ GET /favicon.ico 500 in 25ms
+ GET /settings 200 in 56ms
+ GET /api/user/api-key 200 in 145ms
+ GET /api/user/settings 200 in 199ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 17ms
+ GET /favicon.ico 500 in 15ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 25ms
+ GET /favicon.ico 500 in 12ms
+ GET /favicon.ico 500 in 17ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 14ms
+ GET /favicon.ico 500 in 11ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 34ms
+ GET /favicon.ico 500 in 11ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 32ms
+ GET /favicon.ico 500 in 14ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 20ms
+ GET /favicon.ico 500 in 12ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 27ms
+ GET /favicon.ico 500 in 15ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 28ms
+ GET /favicon.ico 500 in 14ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 26ms
+ GET /favicon.ico 500 in 30ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 27ms
+ GET /favicon.ico 500 in 20ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 37ms
+ GET /favicon.ico 500 in 13ms
+ GET /favicon.ico 500 in 26ms
+ ⨯ ./components/session-insights-dashboard.tsx:104:21
+Parsing ecmascript source code failed
+[0m [90m 102 |[39m                             [33m<[39m[33mspan[39m className[33m=[39m[32m"text-xl text-muted-foreground mb-1"[39m[33m>[39m[33m/[39m[35m10[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 103 |[39m                         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 104 |[39m                     [33m>[39m
+ [90m     |[39m                     [31m[1m^[22m[39m
+ [90m 105 |[39m                         [33m<[39m[33mspan[39m className[33m=[39m[32m"font-medium"[39m[33m>[39m[33mFull[39m [33mTranscript[39m[33m<[39m[33m/[39m[33mspan[39m[33m>[39m
+ [90m 106 |[39m                         {showTranscript [33m?[39m [33m<[39m[33mChevronUp[39m className[33m=[39m[32m"h-4 w-4"[39m [35m/> : <ChevronDown className="h-4 w-4" /[39m[33m>[39m}
+ [90m 107 |[39m                     [33m<[39m[33m/[39m[33mbutton[39m[33m>[39m[0m
+
+Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+Import traces:
+  Client Component Browser:
+    ./components/session-insights-dashboard.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Client Component Browser]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/session-insights-dashboard.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Client Component SSR]
+    ./components/voice-chat-layout.tsx [Server Component]
+    ./app/voice-chat/page.tsx [Server Component]
+
+
+ GET /voice-chat 500 in 51ms
+ GET /favicon.ico 500 in 23ms
+ GET / 307 in 71ms
+ GET /landing 200 in 56ms
+ GET /favicon.ico?favicon.2685530d.ico 500 in 30ms
+ GET /landing 200 in 143ms
+ GET /favicon.ico?favicon.2685530d.ico 500 in 67ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled in 209ms
+ GET /landing 200 in 38ms
+ ✓ Compiled /voice-chat in 30ms
+Local storage is not available.
+ GET /voice-chat 200 in 448ms
+Local storage is not available.
+ GET /voice-chat 200 in 156ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 257ms
+ GET /api/chat-sessions 200 in 249ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 217ms
+ GET /api/chat-sessions 200 in 398ms
+ GET /dashboard 200 in 86ms
+ GET /api/dashboard 200 in 181ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 241ms
+ GET /api/dashboard 200 in 160ms
+ GET /voice-chat 200 in 25ms
+ GET /api/chat-sessions 200 in 206ms
+ GET /api/chat-sessions 200 in 200ms
+ POST /api/analysis 200 in 1570ms
+ PATCH /api/chat-sessions 200 in 152ms
+Local storage is not available.
+ GET /voice-chat 200 in 84ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 265ms
+ GET /api/chat-sessions 200 in 472ms
+ ✓ Compiled in 98ms
+ POST /api/analysis 200 in 2255ms
+ PATCH /api/chat-sessions 200 in 192ms
+ POST /api/analysis 200 in 2208ms
+ PATCH /api/chat-sessions 200 in 154ms
+ POST /api/analysis 200 in 1996ms
+ PATCH /api/chat-sessions 200 in 146ms
+ GET /voice-chat 200 in 182ms
+ GET /peer-support 200 in 84ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 75ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 239ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 146ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 216ms
+ GET /therapist-directory 200 in 43ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 65ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 72ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist?specialty=depression 200 in 79ms
+ GET /pricing 200 in 45ms
+ GET /voice-chat 200 in 47ms
+ GET /api/chat-sessions 200 in 488ms
+ GET /api/chat-sessions 200 in 214ms
+ GET /logout 307 in 214ms
+ GET /landing 200 in 50ms
+ GET /login 200 in 140ms
+ GET /voice-chat 200 in 70ms
+ GET /voice-chat 200 in 32ms
+ GET /api/chat-sessions 200 in 445ms
+ GET /api/chat-sessions 200 in 225ms
+ POST /api/analysis 200 in 2087ms
+ PATCH /api/chat-sessions 200 in 201ms
+ GET /peer-support 200 in 60ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 433ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 465ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 136ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 352ms
+ GET /voice-chat 200 in 48ms
+ GET /api/chat-sessions 200 in 206ms
+ GET /api/chat-sessions 200 in 137ms
+ GET /peer-support 200 in 124ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 358ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 551ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 84ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 146ms
+ GET /therapist-directory 200 in 50ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 156ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 71ms
+ GET /voice-chat 200 in 47ms
+ GET /api/chat-sessions 200 in 605ms
+ GET /api/chat-sessions 200 in 151ms
+ GET /therapist-directory 200 in 55ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 92ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 81ms
+ GET /voice-chat 200 in 48ms
+ GET /api/chat-sessions 200 in 213ms
+ GET /api/chat-sessions 200 in 166ms
+ GET /pricing 200 in 67ms
+ GET /settings 200 in 72ms
+ GET /api/user/settings 200 in 194ms
+ GET /api/user/api-key 200 in 209ms
+ GET /api/user/settings 200 in 200ms
+ GET /api/user/api-key 200 in 155ms
+ GET /voice-chat 200 in 59ms
+ GET /api/chat-sessions 200 in 215ms
+ GET /api/chat-sessions 200 in 137ms
+ POST /api/analysis 200 in 2046ms
+ PATCH /api/chat-sessions 200 in 162ms
+Local storage is not available.
+ GET /voice-chat 200 in 327ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 250ms
+ GET /api/chat-sessions 200 in 642ms
+ POST /api/analysis 200 in 2110ms
+ PATCH /api/chat-sessions 200 in 839ms
+ GET /voice-chat 200 in 147ms
+ GET /landing 200 in 46ms
+ GET /dashboard 200 in 88ms
+ GET /api/dashboard 200 in 847ms
+ GET /api/dashboard 200 in 310ms
+ GET /voice-chat 200 in 46ms
+ GET /api/chat-sessions 200 in 540ms
+ GET /api/chat-sessions 200 in 413ms
+ GET /peer-support 200 in 272ms
+ GET /therapist-directory 200 in 90ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 433ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 224ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 715ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 203ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 243ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 238ms
+ GET /voice-chat 200 in 112ms
+ GET /api/chat-sessions 200 in 776ms
+ GET /api/chat-sessions 200 in 194ms
+ GET /peer-support 200 in 66ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 77ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 269ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 100ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 316ms
+ GET /voice-chat 200 in 54ms
+ GET /api/chat-sessions 200 in 284ms
+ GET /api/chat-sessions 200 in 194ms
+ GET /peer-support 200 in 79ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 112ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 254ms
+Error fetching support groups: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.subscriptions'",
+  message: "Could not find the table 'public.support_groups' in the schema cache"
+}
+ GET /api/support-groups 200 in 96ms
+Error getting recent connections: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapy_sessions'",
+  message: "Could not find the table 'public.peer_connections' in the schema cache"
+}
+ GET /api/peer-stats 200 in 160ms
+ GET /therapist-directory 200 in 39ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 67ms
+Error fetching therapists: {
+  code: 'PGRST205',
+  details: null,
+  hint: "Perhaps you meant the table 'public.therapist_bookings'",
+  message: "Could not find the table 'public.therapists' in the schema cache"
+}
+ GET /api/therapist? 200 in 71ms
+ GET /voice-chat 200 in 48ms
+ GET /api/chat-sessions 200 in 217ms
+ GET /api/chat-sessions 200 in 179ms
+Local storage is not available.
+ GET /voice-chat 200 in 296ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 294ms
+ GET /api/chat-sessions 200 in 967ms
+Local storage is not available.
+ GET /voice-chat 200 in 219ms
+Chat sessions: User not authenticated, returning empty
+ GET /api/chat-sessions 200 in 49ms
+ GET /favicon.ico?favicon.2685530d.ico 200 in 258ms
+ ✓ Compiled middleware in 66ms
+ ✓ Compiled in 153ms
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+   ▲ Next.js 15.4.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.243.75.97:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Compiled middleware in 126ms
+ ✓ Ready in 1150ms

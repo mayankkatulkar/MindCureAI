@@ -504,3 +504,119 @@
     height: 48px;
   }
 }
+
+/* ===== SKELETON LOADING ===== */
+.therapist-card.skeleton {
+  pointer-events: none;
+}
+
+.skeleton-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.skeleton-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg3);
+}
+
+.skeleton-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-line {
+  height: 16px;
+  background: var(--bg3);
+  border-radius: 8px;
+}
+
+.skeleton-bio {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-actions {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+}
+
+.skeleton-button {
+  height: 44px;
+  background: var(--bg3);
+  border-radius: 8px;
+}
+
+.skeleton-button.secondary {
+  background: var(--bg2);
+}
+
+.pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ===== ERROR BANNER ===== */
+.error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.error-banner span {
+  color: var(--fgDanger);
+  font-size: 14px;
+}
+
+.retry-button {
+  background: var(--fgDanger);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #dc2626;
+}
+
+/* ===== AVATAR IMAGE ===== */
+.avatar-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-emoji {
+  font-size: 32px;
+}

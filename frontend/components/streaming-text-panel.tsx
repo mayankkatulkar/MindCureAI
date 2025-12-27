@@ -1,89 +1,125 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import ReactMarkdown from 'react-markdown';
 import { AnimatePresence, motion } from 'motion/react';
 import { type ReceivedChatMessage } from '@livekit/components-react';
 import { cn } from '@/lib/utils';
 
-interface StreamingTextPanelProps {
+interface TranscriptChatProps {
   messages: ReceivedChatMessage[];
   className?: string;
 }
 
-export const StreamingTextPanel = ({ messages, className }: StreamingTextPanelProps) => {
+/**
+ * Premium chat-style transcript display
+ * Shows user messages on the right, AI on the left
+ * Cozy mental health aesthetic
+ */
+export const TranscriptChat = ({ messages, className }: TranscriptChatProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Auto-scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
 
+  if (messages.length === 0) {
+    return (
+      <div className={cn("text-center py-8", className)}>
+        <div className="text-gray-400 text-sm">
+          <span className="text-2xl block mb-2">🎙️</span>
+          Start speaking to see your conversation here
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
+      ref={scrollRef}
       className={cn(
-        'bg-background/95 border-border h-full w-1/3 border-l backdrop-blur-sm',
-        'flex flex-col transition-transform duration-300 ease-in-out',
+        "flex flex-col gap-3 overflow-y-auto max-h-64 px-4 py-3",
         className
       )}
     >
-      {/* Header */}
-      <div className="flex-shrink-0 border-b-2 border-cyan-500 bg-cyan-50 p-4">
-        <h2 className="foreground text-lg font-semibold">Live Transcript</h2>
-        <p className="muted-foreground text-sm">Real-time conversation stream</p>
-      </div>
+      <AnimatePresence initial={false}>
+        {messages.map((message, index) => {
+          const isUser = message.from?.isLocal;
+          const isLatest = index === messages.length - 1;
 
-      {/* Messages Container */}
-      <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4">
-        <AnimatePresence>
-          {messages.map((message: ReceivedChatMessage) => (
+          return (
             <motion.div
               key={message.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="group"
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.3,
+                ease: [0.4, 0, 0.2, 1],
+                delay: isLatest ? 0 : 0.1
+              }}
+              className={cn(
+                "flex",
+                isUser ? "justify-end" : "justify-start"
+              )}
             >
-              <div className="flex items-start gap-2">
-                {/* Avatar/Indicator */}
-                <div className="bg-primary/20 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full">
-                  <span className="primary text-xs font-medium">
-                    {message.from?.isLocal ? 'U' : 'R'}
-                  </span>
+              <div
+                className={cn(
+                  "max-w-[80%] rounded-2xl px-4 py-2.5 shadow-sm",
+                  isUser
+                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-br-md"
+                    : "bg-white/80 backdrop-blur-sm text-gray-700 border border-purple-100 rounded-bl-md",
+                  isLatest && !isUser && "ring-2 ring-purple-200/50"
+                )}
+              >
+                {/* Sender label */}
+                <div className={cn(
+                  "text-[10px] font-semibold uppercase tracking-wider mb-1",
+                  isUser ? "text-white/70" : "text-purple-500"
+                )}>
+                  {isUser ? 'You' : 'Dr. Sarah'}
                 </div>
 
-                {/* Message Content */}
-                <div className="min-w-0 flex-1">
-                  <div className="mb-1 flex items-center gap-2">
-                    <span className="foreground text-sm font-medium">
-                      {message.from?.isLocal ? 'You' : 'Raphael'}
-                    </span>
-                    <span className="text-muted-foreground text-xs">
-                      {new Date(message.timestamp).toLocaleTimeString()}
-                    </span>
-                  </div>
-                  <div className="foreground text-sm leading-relaxed whitespace-pre-wrap">
-                    <ReactMarkdown>{message.message}</ReactMarkdown>
-                  </div>
-                </div>
+                {/* Message text */}
+                <p className={cn(
+                  "text-sm leading-relaxed",
+                  isUser ? "text-white" : "text-gray-700"
+                )}>
+                  {message.message}
+                </p>
               </div>
             </motion.div>
-          ))}
-        </AnimatePresence>
+          );
+        })}
+      </AnimatePresence>
 
-        {/* Empty state */}
-        {messages.length === 0 && (
-          <div className="flex h-full items-center justify-center text-center">
-            <div className="text-muted-foreground">
-              <div className="mb-2 text-4xl">💬</div>
-              <p className="text-sm">Start a conversation to see the live transcript here</p>
-            </div>
+      {/* Typing indicator for when AI is thinking */}
+      {messages.length > 0 && !messages[messages.length - 1].from?.isLocal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0 }}
+          className="flex justify-start"
+        >
+          <div className="bg-white/60 rounded-2xl px-4 py-3 flex gap-1">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                className="w-2 h-2 bg-purple-400 rounded-full"
+                animate={{ y: [0, -4, 0] }}
+                transition={{
+                  duration: 0.6,
+                  repeat: Infinity,
+                  delay: i * 0.15
+                }}
+              />
+            ))}
           </div>
-        )}
-      </div>
+        </motion.div>
+      )}
     </div>
   );
 };
+
+// Legacy export for backward compatibility
+export const StreamingTextPanel = TranscriptChat;
