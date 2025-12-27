@@ -74,18 +74,38 @@ pm2 start npm --name "mindcureai-frontend" -- start
 pm2 save
 sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u ec2-user --hp /home/ec2-user
 
+# Start Agent with PM2
+echo "🚀 Starting Voice Agent with PM2..."
+cd ~/MindCureAI
+# Create virtual env if not exists
+if [ ! -d ".venv" ]; then
+    python3.11 -m venv .venv
+    source .venv/bin/activate
+    pip install -r requirements.txt
+else
+    source .venv/bin/activate
+fi
+
+# Start agent
+pm2 delete mindcureai-agent 2>/dev/null || true
+pm2 start python --name "mindcureai-agent" -- src/agent.py start
+
+# Save PM2 list
+pm2 save
+
 # Get public IP
 PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
 
 echo ""
 echo "✅ Deployment complete!"
 echo ""
-echo "🌐 Your app is running at: http://$PUBLIC_IP:3000"
+echo "🌐 Frontend: http://$PUBLIC_IP:3000"
+echo "🤖 Agent:    http://$PUBLIC_IP:8081"
 echo ""
 echo "📋 Useful PM2 commands:"
-echo "   pm2 logs mindcureai-frontend    # View logs"
-echo "   pm2 restart mindcureai-frontend # Restart app"
-echo "   pm2 status                      # Check status"
+echo "   pm2 logs                        # View all logs"
+echo "   pm2 monit                       # Monitor resources"
+echo "   pm2 restart all                 # Restart everything"
 echo ""
 echo "🔄 To update after code changes:"
 echo "   cd ~/MindCureAI && git pull && cd frontend && pnpm build && pm2 restart mindcureai-frontend"
